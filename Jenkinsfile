@@ -40,7 +40,11 @@ pipeline {
 					}
 		}
 		
-		
+                stage('Email') {
+			steps {
+						emailext attachLog: true, body: 'The status of the build can be obtained from the build log attached', subject: 'STATUS: $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'chandanbms@gmail.com'
+				}
+		}		
 		
 		}
 		
